@@ -27,6 +27,8 @@ namespace PublicDomain
         /// Gets or sets a value indicating whether this <see cref="T:PublicDomain.SettingsData"/> always on top.
         /// </summary>
         /// <value><c>true</c> if always on top; otherwise, <c>false</c>.</value>
+        public bool AlwaysClear { get; set; } = false;
+        public bool NoConfirmation { get; set; } = true;
         public bool AlwaysOnTop { get; set; } = true;
 
         /// <summary>
