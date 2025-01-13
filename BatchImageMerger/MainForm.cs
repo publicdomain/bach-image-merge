@@ -201,6 +201,11 @@ namespace BatchImageMerger
                 // Add to image paths list
                 imagePathsList.Add(this.itemsListView.Items[i].Text);
             }
+            foreach (ListViewItem item in this.itemsListView.Items)
+            {
+                // If Always clear option is checked.
+                if (this.AlwaysClear.Checked) this.itemsListView.Items.Remove(item);
+            }
 
             // Iterate images in list
             while (imagePathsList.Count > 0)
@@ -521,7 +526,7 @@ namespace BatchImageMerger
             this.processButton.Text = "&Process";
 
             // Inform user
-            MessageBox.Show(message, "Batch merged", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //if (this.NoConfirmation.checked) MessageBox.Show(message, "Batch merged", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>
@@ -1021,7 +1026,31 @@ namespace BatchImageMerger
             // Update count
             this.importedCountToolStripStatusLabel.Text = this.itemsListView.Items.Count.ToString();
         }
+        /// <summary>
+        /// Handles the remove all tool strip menu item click.
+        /// </summary>
+        /// <param name="sender">Sender object.</param>
+        /// <param name="e">Event arguments.</param>
+        private void OnRemoveAllToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            // Prevent drawing
+            this.itemsListView.BeginUpdate();
 
+            // Remove all items
+            foreach (ListViewItem item in this.itemsListView.Items)
+            {
+                this.itemsListView.Items.Remove(item);
+            }
+
+            // Adjust column width^M
+            this.itemsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
+            // Resume drawing
+            this.itemsListView.EndUpdate();
+
+            // Update count
+            this.importedCountToolStripStatusLabel.Text = this.itemsListView.Items.Count.ToString();
+        }
         /// <summary>
         /// Ons the destination browse button click.
         /// </summary>
