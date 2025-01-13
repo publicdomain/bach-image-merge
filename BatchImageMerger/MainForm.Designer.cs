@@ -78,6 +78,8 @@ namespace BatchImageMerger
             this.destinationLabel = new System.Windows.Forms.Label();
             this.destinationPathTextBox = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.AlwaysClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuStrip.SuspendLayout();
             this.mainStatusStrip.SuspendLayout();
             this.mainTableLayoutPanel.SuspendLayout();
@@ -133,13 +135,22 @@ namespace BatchImageMerger
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
                                     this.settingsToolStripMenuItem,
+                                    this.AlwaysClear,
                                     this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
+            //
+            // AlwaysClear
+            // 
+            this.AlwaysClear.Checked = true;
+            this.AlwaysClear.CheckState = System.Windows.Forms.CheckState.Unchecked;
+            this.AlwaysClear.Name = "AlwaysClear";
+            this.AlwaysClear.Size = new System.Drawing.Size(176, 22);
+            this.AlwaysClear.Text = "&Always Clear images";
             // 
             // settingsToolStripMenuItem
-            // 
+            //
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
                                     this.importedFileExtensionsToolStripMenuItem,
                                     this.outputFormatValuesToolStripMenuItem});
@@ -351,7 +362,7 @@ namespace BatchImageMerger
             // itemsListViewContextMenuStrip
             // 
             this.itemsListViewContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                    this.removeToolStripMenuItem});
+                                    this.removeToolStripMenuItem, this.removeAllToolStripMenuItem});
             this.itemsListViewContextMenuStrip.Name = "itemsListViewContextMenuStrip";
             this.itemsListViewContextMenuStrip.Size = new System.Drawing.Size(118, 26);
             // 
@@ -361,6 +372,13 @@ namespace BatchImageMerger
             this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeToolStripMenuItem.Text = "&Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.OnRemoveToolStripMenuItemClick);
+            // 
+            // removeAllToolStripMenuItem
+            // 
+            this.removeAllToolStripMenuItem.Name = "removeAllToolStripMenuItem";
+            this.removeAllToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.removeAllToolStripMenuItem.Text = "&Remove All";
+            this.removeAllToolStripMenuItem.Click += new System.EventHandler(this.OnRemoveAllToolStripMenuItemClick);
             // 
             // imagesNumericUpDown
             // 
@@ -577,6 +595,8 @@ namespace BatchImageMerger
         private System.Windows.Forms.Label destinationLabel;
         private System.Windows.Forms.Button destinationBrowseButton;
         private System.Windows.Forms.ToolStripMenuItem scanSubdirectoriesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AlwaysClear;
+        private System.Windows.Forms.ToolStripMenuItem removeAllToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader itemsColumnHeader;
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip itemsListViewContextMenuStrip;
